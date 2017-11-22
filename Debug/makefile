@@ -29,13 +29,13 @@ endif
 # Add inputs and outputs from these tool invocations to the build variables 
 
 # All Target
-all: USART.elf
+all: trab1.elf
 
 # Tool invocations
-USART.elf: $(OBJS) $(USER_OBJS) /home/andre/workspace/USART/LinkerScript.ld
+trab1.elf: $(OBJS) $(USER_OBJS) /home/joao/git/sistrT1/LinkerScript.ld
 	@echo 'Building target: $@'
 	@echo 'Invoking: MCU GCC Linker'
-	arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -T"/home/andre/workspace/USART/LinkerScript.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "USART.elf" @"objects.list" $(USER_OBJS) $(LIBS) -lm
+	arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -T"/home/joao/git/sistrT1/LinkerScript.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "trab1.elf" @"objects.list" $(USER_OBJS) $(LIBS) -lm
 	@echo 'Finished building target: $@'
 	@echo ' '
 	$(MAKE) --no-print-directory post-build
@@ -47,8 +47,8 @@ clean:
 
 post-build:
 	-@echo 'Generating binary and Printing size information:'
-	arm-none-eabi-objcopy -O binary "USART.elf" "USART.bin"
-	arm-none-eabi-size "USART.elf"
+	arm-none-eabi-objcopy -O binary "trab1.elf" "trab1.bin"
+	arm-none-eabi-size "trab1.elf"
 	-@echo ' '
 
 .PHONY: all clean dependents
